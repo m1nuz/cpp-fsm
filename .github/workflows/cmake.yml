@@ -33,14 +33,14 @@ jobs:
       shell: bash
       # Execute the build.  You can specify a specific target with "--target <NAME>"
       run: |
-        cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+        cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DCMAKE_INSTALL_PREFIX:PATH=${{runner.workspace}}
         cmake --build . --config $BUILD_TYPE --target install
       
     - name: Build Examples
       working-directory: ${{runner.workspace}}/build
       shell: bash
       run: |
-        cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DBUILD_EXAMPLES=ON
+        cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DCMAKE_INSTALL_PREFIX:PATH=${{runner.workspace}} -DBUILD_EXAMPLES=ON
         cmake --build . --config $BUILD_TYPE
       
     - name: Test
