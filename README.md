@@ -1,5 +1,5 @@
 # cpp-fsm
-
+[![Actions Status](https://github.com/m1nuz/cpp-fsm/workflows/CMake/badge.svg)](https://github.com/m1nuz/cpp-fsm/actions)
 Simple implementation of FSM in C++17
 
 ## How to build
