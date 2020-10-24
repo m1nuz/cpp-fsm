@@ -19,7 +19,7 @@ namespace fsm {
         static const std::size_t _type; // State type identifier
     };
 
-    [[maybe_unused]] static inline std::size_t generate_state_type( ) noexcept {
+    [[maybe_unused]] inline std::size_t generate_state_type( ) noexcept {
         static auto counter = std::size_t{ 0 };
         return counter++;
     }
@@ -41,7 +41,7 @@ namespace fsm {
         static const std::size_t _type; // Event type identifier
     };
 
-    [[maybe_unused]] static inline std::size_t generate_event_type( ) noexcept {
+    [[maybe_unused]] inline std::size_t generate_event_type( ) noexcept {
         static auto counter = std::size_t{ 0 };
         return counter++;
     }
