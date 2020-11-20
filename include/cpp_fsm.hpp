@@ -11,6 +11,10 @@ namespace fsm {
     ///
     struct base_state {
         virtual ~base_state( ) = default;
+        virtual void on_enter( ) {
+        }
+        virtual void on_leave( ) {
+        }
     };
     ///
     /// Typed state
@@ -77,7 +81,11 @@ namespace fsm {
                 _state );
 
             if ( new_state ) {
+                std::visit( []( auto &s ) { s.on_leave( ); }, _state );
+
                 _state = *std::move( new_state );
+
+                std::visit( []( auto &s ) { s.on_enter( ); }, _state );
             }
         }
 

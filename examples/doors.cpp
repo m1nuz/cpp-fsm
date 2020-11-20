@@ -10,11 +10,23 @@ struct LockEvent : fsm::typed_event<LockEvent> {};
 
 struct UnlockEvent : fsm::typed_event<UnlockEvent> {};
 
-struct ClosedState : fsm::typed_state<ClosedState> {};
+struct ClosedState : fsm::typed_state<ClosedState> {
+    void on_enter( ) override {
+        std::cout << "-Closed-" << std::endl;
+    }
+};
 
-struct OpenState : fsm::typed_state<OpenState> {};
+struct OpenState : fsm::typed_state<OpenState> {
+    void on_enter( ) override {
+        std::cout << "-Opened-" << std::endl;
+    }
+};
 
-struct LockedState : fsm::typed_state<LockedState> {};
+struct LockedState : fsm::typed_state<LockedState> {
+    void on_enter( ) override {
+        std::cout << "-Locked-" << std::endl;
+    }
+};
 
 using Door = fsm::state_machine<OpenState, LockedState, ClosedState>;
 
